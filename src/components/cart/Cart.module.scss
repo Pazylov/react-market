@@ -1,0 +1,29 @@
+.cart {
+	@apply w-auto h-auto flex items-center gap-3;
+
+	> .icon {
+		> svg {
+			@apply size-7;
+		}
+	}
+
+	> .text {
+		@apply font-medium text-base;
+
+		> .sum {
+			@apply text-[#000];
+		}
+
+		> .link {
+			@apply relative text-whiskySour after:content-[''];
+
+			&::after {
+				@apply absolute bottom-[-3px] left-0 w-0 h-[2px] bg-whiskySour transition-all duration-300;
+			}
+
+			&:hover::after {
+				@apply w-[95%];
+			}
+		}
+	}
+}

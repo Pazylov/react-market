@@ -1,0 +1,14 @@
+.card {
+	@apply shadow-card w-auto h-[640px] flex flex-col justify-between;
+
+	> .image {
+		@apply w-full h-[45%] pt-5 px-12 pb-7;
+
+		> img {
+		}
+	}
+
+	> .content {
+		@apply flex flex-col grow justify-end p-5;
+	}
+}

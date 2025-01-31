@@ -1,11 +1,11 @@
 .cardDetail {
-	@apply w-full h-[750px] grid grid-cols-2  gap-7;
+	@apply mt-5 w-full h-[750px] grid grid-cols-2  gap-7;
 
 	> .gallery {
 		@apply w-full h-full grid grid-rows-images gap-4;
 
 		> .bigImage {
-			@apply size-[200px];
+			@apply w-full h-full;
 		}
 
 		> .imagesList {
@@ -16,6 +16,7 @@
 			}
 		}
 	}
+
 	> .characteristic {
 		@apply w-full h-full shadow-card p-7;
 
@@ -35,11 +36,8 @@
 					> .rating {
 					}
 				}
-
-				> .favorite {
-					@apply size-7 text-whiskySour cursor-pointer;
-				}
 			}
+
 			> .inStockTrue {
 				@apply text-base font-medium text-[#24ad53];
 			}
@@ -50,12 +48,53 @@
 		}
 
 		> .content {
-			@apply mt-7;
+			@apply mt-7 pb-7 border-b border-solid border-[#14141426];
+
+			> .contentList {
+				@apply flex flex-col gap-4;
+
+				> .item {
+					@apply grid grid-cols-[30%_1fr] items-start gap-5 text-lg font-medium;
+
+					> .itemTitle {
+					}
+
+					> .itemDesc {
+						@apply text-gray-400;
+					}
+				}
+			}
 		}
 
-		> .BottomContent {
+		> .bottomContent {
+			@apply mt-7;
+
+			> .price {
+				@apply text-3xl font-bold;
+			}
+
+			> .bottomContainer {
+				@apply mt-7 flex items-center gap-[100px];
+
+				> .btn {
+					@apply w-[35%] h-[50px] mt-1 flex items-center justify-center gap-2 py-[2px] text-lg font-semibold text-white bg-whiskySour;
+				}
+			}
 		}
 	}
 }
 .desc {
+	@apply my-[100px] w-full h-auto p-7 shadow-card;
+
+	> .descTitle {
+		@apply inline-block relative after:content-[""] text-xl font-bold;
+
+		&::after {
+			@apply absolute bottom-[-5px] left-0 w-full h-[2px] bg-whiskySour;
+		}
+	}
+
+	> .descText {
+		@apply mt-5 text-lg font-medium;
+	}
 }

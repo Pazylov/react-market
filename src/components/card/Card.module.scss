@@ -1,10 +1,6 @@
 .card {
 	@apply relative shadow-card w-auto h-[600px] flex flex-col justify-between;
 
-	> .discount {
-		@apply absolute left-0 top-5 px-5 py-1 bg-whiskySour text-white text-lg font-semibold;
-	}
-
 	> .image {
 		@apply w-full h-[45%] pt-5 px-12 pb-7;
 
@@ -28,9 +24,6 @@
 
 			> .price {
 				@apply font-semibold text-xl;
-			}
-			> .favorite {
-				@apply size-7 text-whiskySour cursor-pointer;
 			}
 		}
 		> .btn {

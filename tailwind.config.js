@@ -9,6 +9,7 @@ export default {
 			colors: {
 				whiskySour: ' #e8aa31',
 				mauiMist: '#ecf1f2',
+				accent: '#141414',
 			},
 			fontFamily: {
 				default: ['Montserrat', 'sans-serif'],

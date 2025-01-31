@@ -16,6 +16,9 @@ export default {
 			gridTemplateColumns: {
 				sidebar: '20% 1fr',
 			},
+			gridTemplateRows: {
+				images: '1fr, 25%',
+			},
 		},
 	},
 	plugins: [],

@@ -1,0 +1,61 @@
+.cardDetail {
+	@apply w-full h-[750px] grid grid-cols-2  gap-7;
+
+	> .gallery {
+		@apply w-full h-full grid grid-rows-images gap-4;
+
+		> .bigImage {
+			@apply size-[200px];
+		}
+
+		> .imagesList {
+			@apply grid grid-cols-4 gap-4 flex-wrap;
+
+			> .imagesItem {
+				@apply w-full h-full;
+			}
+		}
+	}
+	> .characteristic {
+		@apply w-full h-full shadow-card p-7;
+
+		> .topContent {
+			@apply flex flex-col gap-3 pb-7 border-b border-solid border-[#14141426];
+
+			> .topContainer {
+				@apply flex items-end justify-between;
+
+				> .container {
+					@apply flex items-end gap-5;
+
+					> .name {
+						@apply max-w-[50%] text-2xl font-bold;
+					}
+
+					> .rating {
+					}
+				}
+
+				> .favorite {
+					@apply size-7 text-whiskySour cursor-pointer;
+				}
+			}
+			> .inStockTrue {
+				@apply text-base font-medium text-[#24ad53];
+			}
+
+			> .inStockFalse {
+				@apply text-base font-medium text-[#e7401b];
+			}
+		}
+
+		> .content {
+			@apply mt-7;
+		}
+
+		> .BottomContent {
+		}
+	}
+}
+.desc {
+}

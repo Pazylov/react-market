@@ -15,7 +15,7 @@ export function Header({ loading, error }) {
 		<>
 			<header className={styles.header}>
 				<Link className={styles.logo} to='/'>
-					<img src='header/logo.png' alt='ZLATMAX' />
+					<img src='/header/logo.png' alt='ZLATMAX' />
 				</Link>
 
 				<form>

@@ -1,5 +1,9 @@
 .card {
-	@apply shadow-card w-auto h-[640px] flex flex-col justify-between;
+	@apply relative shadow-card w-auto h-[600px] flex flex-col justify-between;
+
+	> .discount {
+		@apply absolute left-0 top-5 px-5 py-1 bg-whiskySour text-white text-lg font-semibold;
+	}
 
 	> .image {
 		@apply w-full h-[45%] pt-5 px-12 pb-7;
@@ -9,6 +13,28 @@
 	}
 
 	> .content {
-		@apply flex flex-col grow justify-end p-5;
+		@apply flex flex-col grow justify-end p-5 gap-4;
+
+		> .name {
+			@apply font-semibold text-xl;
+		}
+		> .steel {
+			@apply font-semibold text-base text-gray-400;
+		}
+		> .rating {
+		}
+		> .container {
+			@apply flex  pt-5 items-center justify-between border-t border-solid border-[#14141480];
+
+			> .price {
+				@apply font-semibold text-xl;
+			}
+			> .favorite {
+				@apply size-7 text-whiskySour cursor-pointer;
+			}
+		}
+		> .btn {
+			@apply w-[95%] h-11 mt-1 mx-auto flex items-center justify-center gap-2 py-[2px] text-lg font-semibold text-white bg-whiskySour;
+		}
 	}
 }

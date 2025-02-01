@@ -2,10 +2,10 @@ import { useState } from 'react'
 import { IoHeartOutline, IoHeartSharp } from 'react-icons/io5'
 
 export function HeartBnt() {
-	const [change, SetChange] = useState(true)
+	const [change, setChange] = useState(true)
 
 	const handleChangeToggle = () => {
-		SetChange(!change)
+		setChange(!change)
 	}
 
 	return (

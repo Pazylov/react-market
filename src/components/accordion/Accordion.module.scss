@@ -1,0 +1,15 @@
+.accordion {
+	@apply py-3 px-7 text-white text-lg font-semibold bg-accent cursor-pointer;
+
+	> .title {
+		@apply flex justify-between items-center;
+
+		> svg {
+			@apply w-5 h-auto text-whiskySour;
+		}
+	}
+}
+
+.content {
+	@apply py-5 px-7;
+}

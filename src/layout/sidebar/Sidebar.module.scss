@@ -1,0 +1,7 @@
+.sidebar {
+	@apply shadow-card w-full h-fit;
+
+	> .content {
+		@apply flex items-center gap-4;
+	}
+}

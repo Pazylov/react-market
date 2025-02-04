@@ -1,7 +1,15 @@
 .sidebar {
-	@apply shadow-card w-full h-fit;
+	@apply flex flex-col gap-1 shadow-card w-full h-fit;
 
-	> .content {
-		@apply flex items-center gap-4;
+	.list {
+		@apply flex flex-col gap-5;
+
+		> .content {
+			@apply flex items-center gap-4;
+
+			> .productCount {
+				@apply text-whiskySour font-medium text-base;
+			}
+		}
 	}
 }

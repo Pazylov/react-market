@@ -1,0 +1,11 @@
+.loading {
+	@apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%];
+
+	> .circle {
+		@apply relative w-full h-full;
+
+		> .loadingCircle {
+			@apply size-14 text-whiskySour animate-spin;
+		}
+	}
+}

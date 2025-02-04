@@ -2,8 +2,14 @@
 	@apply w-auto h-auto flex items-center gap-3;
 
 	> .icon {
+		@apply relative;
+
 		> svg {
 			@apply size-7;
+		}
+
+		> .productCount {
+			@apply absolute right-[-5px] top-[-5px] w-5 content-center text-center leading-4 bg-whiskySour text-white aspect-square rounded-full text-[12px];
 		}
 	}
 

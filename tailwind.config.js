@@ -15,7 +15,7 @@ export default {
 				default: ['Montserrat', 'sans-serif'],
 			},
 			gridTemplateColumns: {
-				sidebar: '20% 1fr',
+				sidebar: '23% 1fr',
 			},
 			gridTemplateRows: {
 				images: '1fr, 25%',

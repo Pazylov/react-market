@@ -1,22 +1,26 @@
 import { Link, useParams } from 'react-router-dom'
 import { LoadingPage } from '../loading/LoadingPage'
 
-import { useState } from 'react'
+import { useContext, useEffect } from 'react'
 import { PiShoppingCartLight } from 'react-icons/pi'
 import { HeartBnt } from '../../components/Btns/HeartBnt'
 import { Rating } from '../../components/Rating'
-import { Counter } from '../../components/Сounter'
+import { GlobalContext } from '../../Provider'
 import styles from './CardDetailPage.module.scss'
 
-export function CardDetailPage({ knives }) {
-	const { knifeId } = useParams()
-	const knife = knives.find(knife => knife.id === parseInt(knifeId))
+export function CardDetailPage() {
+	const { allKnives, cart, setCart } = useContext(GlobalContext)
 
-	const [count, setCount] = useState(1)
+	const { productId } = useParams()
+	const product = allKnives.find(knife => knife.id === parseInt(productId))
+
+	useEffect(() => {
+		localStorage.setItem('cart', JSON.stringify(cart))
+	}, [cart])
 
 	const url = 'http://localhost:8000/static/images/knives/'
 
-	if (!knife) {
+	if (!product) {
 		return (
 			<p>
 				нож не найден <Link to='/'>Назад</Link>{' '}
@@ -24,8 +28,18 @@ export function CardDetailPage({ knives }) {
 		)
 	}
 
-	if (!knife || knife.length === 0) {
+	if (!product || product.length === 0) {
 		return <LoadingPage />
+	}
+
+	const handleCartToggle = product => {
+		const isInCart = cart.some(item => item.id === product.id)
+
+		if (isInCart) {
+			setCart(prevCart => prevCart.filter(item => item.id !== product.id))
+		} else {
+			setCart(prevCart => [...prevCart, { ...product, quantity: 1 }])
+		}
 	}
 
 	return (
@@ -34,11 +48,11 @@ export function CardDetailPage({ knives }) {
 				<div className={styles.gallery}>
 					<img
 						className={styles.bigImage}
-						src={`${url}${knife.image}`}
-						alt={knife.name}
+						src={`${url}${product.image}`}
+						alt={product.name}
 					/>
 					<ul className={styles.imagesList}>
-						{knife.images.map(image => (
+						{product.images.map(image => (
 							<li className={styles.imagesItem} key={image}>
 								<img src={`${url}${image}`} alt={image} />
 							</li>
@@ -50,18 +64,18 @@ export function CardDetailPage({ knives }) {
 					<div className={styles.topContent}>
 						<div className={styles.topContainer}>
 							<div className={styles.container}>
-								<h2 className={styles.name}>{knife.name}</h2>
+								<h2 className={styles.name}>{product.name}</h2>
 								<Rating
 									className={styles.rating}
-									rating={knife.rating}
+									rating={product.rating}
 									numberStarts={5}
 									size={'20px'}
 									spacing={'3px'}
 								/>
 							</div>
-							<HeartBnt />
+							<HeartBnt product={product} />
 						</div>
-						{knife.inStock ? (
+						{product.inStock ? (
 							<p className={styles.inStockTrue}>В наличии</p>
 						) : (
 							<p className={styles.inStockFalse}>Нет в наличии</p>
@@ -72,31 +86,32 @@ export function CardDetailPage({ knives }) {
 						<ul className={styles.contentList}>
 							<li className={styles.item}>
 								<h4 className={styles.itemTitle}>Артикул:</h4>
-								<p className={styles.itemDesc}>{knife.article}</p>
+								<p className={styles.itemDesc}>{product.article}</p>
 							</li>
 							<li className={styles.item}>
 								<h4 className={styles.itemTitle}>Торговая марка:</h4>
 								<p className={styles.itemDesc}>
-									{knife.trademark} Торговая марка: Торговая марка: Торговая
+									{product.trademark} Торговая марка: Торговая марка: Торговая
 									марка:
 								</p>
 							</li>
 							<li className={styles.item}>
 								<h4 className={styles.itemTitle}>Серия:</h4>
-								<p className={styles.itemDesc}>{knife.series}</p>
+								<p className={styles.itemDesc}>{product.series}</p>
 							</li>
 						</ul>
 					</div>
 					<div className={styles.bottomContent}>
-						<h3 className={styles.price}>
-							{(knife.price * count).toFixed(2)} c
-						</h3>
+						<h3 className={styles.price}>{product.price.toFixed(2)} c</h3>
 
 						<div className={styles.bottomContainer}>
-							<Counter count={count} setCount={setCount} />
-
-							<button className={styles.btn}>
-								В корзину
+							<button
+								onClick={() => handleCartToggle(product)}
+								className={styles.btn}
+							>
+								{cart.some(item => item.id === product.id)
+									? 'Удалить из корзины'
+									: 'Добавить в корзину'}
 								<PiShoppingCartLight />
 							</button>
 						</div>
@@ -105,7 +120,7 @@ export function CardDetailPage({ knives }) {
 			</div>
 			<div className={styles.desc}>
 				<h3 className={styles.descTitle}>Описание</h3>
-				<p className={styles.descText}>{knife.description}</p>
+				<p className={styles.descText}>{product.description}</p>
 			</div>
 		</>
 	)

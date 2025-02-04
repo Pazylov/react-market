@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { RiArrowDownWideFill, RiArrowUpWideFill } from 'react-icons/ri'
+import { RiArrowUpWideFill } from 'react-icons/ri'
 import styles from './Accordion.module.scss'
 
 export function Accordion({ title, children }) {
@@ -14,7 +14,7 @@ export function Accordion({ title, children }) {
 			<div className={styles.accordion} onClick={handleOpenAccordionToggle}>
 				<div className={styles.title}>
 					{title}
-					{isOpen ? <RiArrowUpWideFill /> : <RiArrowDownWideFill />}
+					<RiArrowUpWideFill className={`${isOpen ? '' : 'rotate-180'}`} />
 				</div>
 			</div>
 			{isOpen && <div className={styles.content}>{children}</div>}

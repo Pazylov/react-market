@@ -1,37 +1,43 @@
+import { useContext } from 'react'
 import { PiShoppingCartLight } from 'react-icons/pi'
 import { Link } from 'react-router-dom'
+import { GlobalContext } from '../../Provider'
 import { HeartBnt } from '../Btns/HeartBnt'
 import { Discount } from '../Discount'
 import { Rating } from '../Rating'
 import styles from './Card.module.scss'
 
-export function Card({ knife }) {
+export function Card({ product, handleToggle }) {
+	const { cart } = useContext(GlobalContext)
+
 	return (
 		<li className={styles.card}>
-			<Discount discount={knife.discount} />
+			<Discount discount={product.discount} />
 
-			<Link className={styles.image} to={`knife/${knife.id}`}>
+			<Link className={styles.image} to={`knife/${product.id}`}>
 				<img src='card/knife.png' alt='01' />
 			</Link>
 
 			<div className={styles.content}>
-				<h3 className={styles.name}>{knife.name}</h3>
-				<p className={styles.steel}>{knife.steel}</p>
+				<h3 className={styles.name}>{product.name}</h3>
+				<p className={styles.steel}>{product.steel}</p>
 
 				<Rating
-					rating={knife.rating}
+					rating={product.rating}
 					numberStarts={5}
 					size={'22px'}
 					spacing={'5px'}
 				/>
 
 				<div className={styles.container}>
-					<h4 className={styles.price}>{knife.price.toFixed(2)} c</h4>
+					<h4 className={styles.price}>{product.price.toFixed(2)} c</h4>
 
-					<HeartBnt />
+					<HeartBnt product={product} />
 				</div>
-				<button className={styles.btn}>
-					В корзину
+				<button onClick={() => handleToggle(product)} className={styles.btn}>
+					{cart.some(item => item.id === product.id)
+						? 'Удалить из корзины'
+						: 'Добавить в корзину'}
 					<PiShoppingCartLight />
 				</button>
 			</div>

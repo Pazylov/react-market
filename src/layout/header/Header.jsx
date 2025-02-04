@@ -2,12 +2,16 @@ import { Link, Outlet } from 'react-router-dom'
 import { LoadingPage } from '../../pages/loading/LoadingPage'
 import { NotFoundPage } from '../../pages/notFoundPage/notFoundPage'
 
+import { useContext } from 'react'
 import { IoHeartOutline } from 'react-icons/io5'
 import { Cart } from '../../components/cart/Cart'
 import { Input } from '../../components/Input'
+import { GlobalContext } from '../../Provider'
 import styles from './Header.module.scss'
 
-export function Header({ loading, error }) {
+export function Header() {
+	const { loading, error } = useContext(GlobalContext)
+
 	if (loading) return <LoadingPage />
 	if (error) return <NotFoundPage />
 

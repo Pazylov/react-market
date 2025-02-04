@@ -77,7 +77,7 @@
 				@apply mt-7 flex items-center gap-[100px];
 
 				> .btn {
-					@apply w-[35%] h-[50px] mt-1 flex items-center justify-center gap-2 py-[2px] text-lg font-semibold text-white bg-whiskySour;
+					@apply w-auto px-10 h-[50px] mt-1 flex items-center justify-center gap-2 py-[2px] text-lg font-semibold text-white bg-whiskySour;
 				}
 			}
 		}

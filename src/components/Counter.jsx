@@ -1,4 +1,9 @@
+import { useContext } from 'react'
+import { GlobalContext } from '../Provider'
+
 export function Counter({ count, setCount }) {
+	const { cart, setCart } = useContext(GlobalContext)
+
 	const decrement = () => {
 		{
 			count === 1 ? setCount(count) : setCount(count - 1)

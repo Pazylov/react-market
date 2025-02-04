@@ -1,3 +1,3 @@
 export function FavoritePage() {
-	return <div>ChosenOnePage</div>
+	return <div>FavoritePage</div>
 }

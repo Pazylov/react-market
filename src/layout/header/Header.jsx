@@ -10,7 +10,7 @@ import { GlobalContext } from '../../Provider'
 import styles from './Header.module.scss'
 
 export function Header() {
-	const { loading, error } = useContext(GlobalContext)
+	const { loading, error, favorite } = useContext(GlobalContext)
 
 	if (loading) return <LoadingPage />
 	if (error) return <NotFoundPage />
@@ -29,6 +29,7 @@ export function Header() {
 				<div className={styles.container}>
 					<Link to='favorite' className={styles.favorite}>
 						<IoHeartOutline />
+						<p className={styles.favoriteCount}>{favorite.length}</p>
 					</Link>
 
 					<Cart />

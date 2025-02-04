@@ -1,5 +1,5 @@
 .card {
-	@apply relative shadow-card w-auto h-[600px] flex flex-col justify-between;
+	@apply relative shadow-card w-auto h-[640px] flex flex-col justify-between;
 
 	> .image {
 		@apply w-full h-[45%] pt-5 px-12 pb-7;
@@ -14,11 +14,18 @@
 		> .name {
 			@apply font-semibold text-xl;
 		}
-		> .steel {
-			@apply font-semibold text-base text-gray-400;
+
+		> .characteristic {
+			@apply flex items-center justify-between font-semibold text-base;
+
+			> .title {
+			}
+
+			> .desc {
+				@apply text-gray-400;
+			}
 		}
-		> .rating {
-		}
+
 		> .container {
 			@apply flex  pt-5 items-center justify-between border-t border-solid border-[#14141480];
 

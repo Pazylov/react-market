@@ -20,7 +20,16 @@ export function Card({ product, handleToggle }) {
 
 			<div className={styles.content}>
 				<h3 className={styles.name}>{product.name}</h3>
-				<p className={styles.steel}>{product.steel}</p>
+
+				<div className={styles.characteristic}>
+					<p className={styles.title}>Сталь:</p>
+					<p className={styles.desc}>{product.steel}</p>
+				</div>
+
+				<div className={styles.characteristic}>
+					<p className={styles.title}>Производство:</p>
+					<p className={styles.desc}>{product.trademark}</p>
+				</div>
 
 				<Rating
 					rating={product.rating}

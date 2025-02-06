@@ -12,9 +12,6 @@ export function Collections() {
 		localStorage.setItem('cart', JSON.stringify(cart))
 	}, [cart])
 
-	if (knivesLoading) return <LoadingPage />
-	if (KnivesError) return <NotFoundPage />
-
 	const handleCartToggle = product => {
 		const isInCart = cart.some(item => item.id === product.id)
 
@@ -24,6 +21,9 @@ export function Collections() {
 			setCart(prevCart => [...prevCart, { ...product }])
 		}
 	}
+
+	if (knivesLoading) return <LoadingPage />
+	if (KnivesError) return <NotFoundPage />
 
 	return (
 		<ul className='grid gap-5 grid-cols-3'>

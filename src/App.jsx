@@ -15,11 +15,14 @@ export function App() {
 
 					<Route path='/collection' element={<CollectionPage />} />
 
-					<Route path='knife/:productId' element={<CardDetailPage />} />
+					<Route
+						path='/collection/knife/:productId'
+						element={<CardDetailPage />}
+					/>
 
-					<Route path='cart' element={<CartPage />} />
+					<Route path='/cart' element={<CartPage />} />
 
-					<Route path='favorite' element={<FavoritePage />} />
+					<Route path='/favorite' element={<FavoritePage />} />
 				</Route>
 			</Routes>
 		</div>

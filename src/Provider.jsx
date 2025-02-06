@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { createContext, useEffect, useState } from 'react'
+import { debounce } from 'lodash'
+import { createContext, useCallback, useEffect, useRef, useState } from 'react'
 
 export const GlobalContext = createContext()
 
@@ -9,6 +10,9 @@ export const GlobalPRovider = ({ children }) => {
 	const [allTrademark, setAllTrademark] = useState(null)
 	const allRating = [5, 4, 3, 2, 1]
 
+	const inputRef = useRef(null)
+
+	const [searchQuery, setSearchQuery] = useState('')
 	const [filterByTrademark, setFilterByTrademark] = useState([])
 	const [filterBySteel, setFilterBySteel] = useState([])
 	const [filterByRating, setFilterByRating] = useState([])
@@ -32,6 +36,71 @@ export const GlobalPRovider = ({ children }) => {
 	const [knivesLoading, setKnivesLoading] = useState(true)
 	const [KnivesError, setKnivesError] = useState(null)
 
+	const fetchData = useCallback(
+		debounce(async (query, filters, controller) => {
+			try {
+				setKnivesLoading(true)
+				setKnivesError(null)
+
+				const url = 'http://localhost:8000/api/product'
+				const queryParams = new URLSearchParams()
+
+				if (filters.trademark?.length)
+					queryParams.append('trademark', JSON.stringify(filters.trademark))
+
+				if (filters.steel?.length)
+					queryParams.append('steel', JSON.stringify(filters.steel))
+
+				if (filters.rating?.length)
+					queryParams.append('rating', JSON.stringify(filters.rating))
+
+				if (filters.inStock !== undefined)
+					queryParams.append('inStock', filters.inStock)
+
+				if (query) queryParams.append('searchText', query)
+
+				const queryString = queryParams.toString()
+				const response = await axios.get(`${url}/knives?${queryString}`, {
+					signal: controller.signal,
+				})
+
+				setAllKnives(response.data)
+			} catch (error) {
+				if (!axios.isCancel(error)) {
+					setKnivesError(error)
+				}
+			} finally {
+				setKnivesLoading(false)
+			}
+		}, 500),
+		[]
+	)
+
+	useEffect(() => {
+		const controller = new AbortController()
+		fetchData(
+			searchQuery,
+			{
+				trademark: filterByTrademark,
+				steel: filterBySteel,
+				rating: filterByRating,
+				inStock: filterByInStock,
+			},
+			controller
+		)
+
+		return () => {
+			controller.abort()
+			fetchData.cancel()
+		}
+	}, [
+		searchQuery,
+		filterByTrademark,
+		filterBySteel,
+		filterByRating,
+		filterByInStock,
+	])
+
 	useEffect(() => {
 		const url = 'http://localhost:8000/api/product'
 		const fetchData = async () => {
@@ -53,50 +122,10 @@ export const GlobalPRovider = ({ children }) => {
 	}, [])
 
 	useEffect(() => {
-		const url = 'http://localhost:8000/api/product'
-		const controller = new AbortController()
-
-		const fetchData = async () => {
-			try {
-				const queryParams = new URLSearchParams()
-
-				if (filterByTrademark && filterByTrademark.length) {
-					queryParams.append('trademark', JSON.stringify(filterByTrademark))
-				}
-
-				if (filterBySteel && filterBySteel.length) {
-					queryParams.append('steel', JSON.stringify(filterBySteel))
-				}
-
-				if (filterByRating && filterByRating.length) {
-					queryParams.append('rating', JSON.stringify(filterByRating))
-				}
-
-				if (filterByInStock !== undefined) {
-					queryParams.append('inStock', filterByInStock)
-				}
-
-				const queryString = queryParams.toString()
-
-				const response = await axios.get(`${url}/knives?${queryString}`, {
-					signal: controller.signal,
-				})
-
-				setAllKnives(response.data)
-			} catch (error) {
-				if (axios.isCancel(error)) {
-					// console.log('Запрос отменен')
-				} else {
-					setKnivesError(error)
-				}
-			} finally {
-				setKnivesLoading(false)
-			}
+		if (inputRef.current) {
+			inputRef.current.focus()
 		}
-
-		fetchData()
-		return () => controller.abort()
-	}, [filterByTrademark, filterBySteel, filterByRating, filterByInStock])
+	}, [searchQuery])
 
 	useEffect(() => {
 		const total = cart.reduce((sum, item) => sum + item.price, 0)
@@ -109,6 +138,10 @@ export const GlobalPRovider = ({ children }) => {
 		allTrademark,
 		allRating,
 
+		inputRef,
+
+		searchQuery,
+		setSearchQuery,
 		filterByTrademark,
 		setFilterByTrademark,
 		filterBySteel,

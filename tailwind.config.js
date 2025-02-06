@@ -16,6 +16,7 @@ export default {
 			},
 			gridTemplateColumns: {
 				sidebar: '23% 1fr',
+				lgSidebar: '33% 1fr',
 			},
 			gridTemplateRows: {
 				images: '1fr, 25%',

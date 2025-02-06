@@ -1,11 +1,20 @@
-import { Main } from '../../layout/main/Main'
-import Sidebar from '../../layout/sideBar/SideBar'
+import { useContext } from 'react'
+import { Outlet } from 'react-router-dom'
+import { Header } from '../../layout/header/Header'
+import { GlobalContext } from '../../Provider'
+import { LoadingPage } from '../loading/LoadingPage'
+import { NotFoundPage } from '../notFoundPage/notFoundPage'
 
 export function HomePage() {
+	const { loading, error } = useContext(GlobalContext)
+
+	if (loading) return <LoadingPage />
+	if (error) return <NotFoundPage />
+
 	return (
-		<div className='grid gap-5 grid-cols-sidebar mt-5'>
-			<Sidebar />
-			<Main />
-		</div>
+		<>
+			<Header />
+			<Outlet />
+		</>
 	)
 }

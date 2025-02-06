@@ -38,7 +38,7 @@ export function CardDetailPage() {
 		if (isInCart) {
 			setCart(prevCart => prevCart.filter(item => item.id !== product.id))
 		} else {
-			setCart(prevCart => [...prevCart, { ...product, quantity: 1 }])
+			setCart(prevCart => [...prevCart, { ...product }])
 		}
 	}
 
@@ -105,15 +105,22 @@ export function CardDetailPage() {
 						<h3 className={styles.price}>{product.price.toFixed(2)} c</h3>
 
 						<div className={styles.bottomContainer}>
-							<button
-								onClick={() => handleCartToggle(product)}
-								className={styles.btn}
-							>
-								{cart.some(item => item.id === product.id)
-									? 'Удалить из корзины'
-									: 'Добавить в корзину'}
-								<PiShoppingCartLight />
-							</button>
+							{product.inStock ? (
+								<button
+									onClick={() => handleCartToggle(product)}
+									className={styles.btn}
+								>
+									{cart.some(item => item.id === product.id)
+										? 'Удалить из корзины'
+										: 'Добавить в корзину'}
+									<PiShoppingCartLight />
+								</button>
+							) : (
+								<button disabled className={styles.btn}>
+									Нет в наличии
+									<PiShoppingCartLight />
+								</button>
+							)}
 						</div>
 					</div>
 				</div>

@@ -1,19 +1,13 @@
-import { Link, Outlet } from 'react-router-dom'
-import { LoadingPage } from '../../pages/loading/LoadingPage'
-import { NotFoundPage } from '../../pages/notFoundPage/notFoundPage'
+import { Link, NavLink } from 'react-router-dom'
 
 import { useContext } from 'react'
 import { IoHeartOutline } from 'react-icons/io5'
 import { Cart } from '../../components/cart/Cart'
-import { Input } from '../../components/Input'
 import { GlobalContext } from '../../Provider'
 import styles from './Header.module.scss'
 
 export function Header() {
-	const { loading, error, favorite } = useContext(GlobalContext)
-
-	if (loading) return <LoadingPage />
-	if (error) return <NotFoundPage />
+	const { favorite } = useContext(GlobalContext)
 
 	return (
 		<>
@@ -22,9 +16,25 @@ export function Header() {
 					<img src='/header/logo.png' alt='ZLATMAX' />
 				</Link>
 
-				<form>
-					<Input type={'search'} placeholder={'Поиск'} />
-				</form>
+				<ul className={styles.navList}>
+					<NavLink
+						className={({ isActive }) =>
+							isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
+						}
+						to='/'
+					>
+						HOME
+					</NavLink>
+
+					<NavLink
+						className={({ isActive }) =>
+							isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
+						}
+						to='/collection'
+					>
+						COLLECTION
+					</NavLink>
+				</ul>
 
 				<div className={styles.container}>
 					<Link to='favorite' className={styles.favorite}>
@@ -35,7 +45,6 @@ export function Header() {
 					<Cart />
 				</div>
 			</header>
-			<Outlet />
 		</>
 	)
 }

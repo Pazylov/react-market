@@ -43,12 +43,17 @@ export function Card({ product, handleToggle }) {
 
 					<HeartBnt product={product} />
 				</div>
-				<button onClick={() => handleToggle(product)} className={styles.btn}>
-					{cart.some(item => item.id === product.id)
-						? 'Удалить из корзины'
-						: 'Добавить в корзину'}
-					<PiShoppingCartLight />
-				</button>
+
+				{product.inStock ? (
+					<button onClick={() => handleToggle(product)} className={styles.btn}>
+						{cart.some(item => item.id === product.id)
+							? 'Удалить из корзины'
+							: 'Добавить в корзину'}
+						<PiShoppingCartLight />
+					</button>
+				) : (
+					<p className={styles.disabledBtn}>Нет в наличии</p>
+				)}
 			</div>
 		</li>
 	)

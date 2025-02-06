@@ -9,6 +9,26 @@
 		}
 	}
 
+	> .navList {
+		@apply flex gap-5;
+
+		> .navItem {
+			@apply after:content-[''] relative text-lg font-medium;
+
+			&::after {
+				@apply absolute bottom-[-3px] left-0 w-0 h-[2px] bg-whiskySour transition-all duration-300;
+			}
+
+			&:hover::after {
+				@apply w-[95%];
+			}
+
+			&.active::after {
+				@apply w-[85%];
+			}
+		}
+	}
+
 	> .container {
 		@apply flex gap-5 items-center;
 

@@ -5,7 +5,7 @@ import { GlobalContext } from '../../Provider'
 import styles from './Cart.module.scss'
 
 export function Cart() {
-	const { cart } = useContext(GlobalContext)
+	const { cart, cartTotalSum } = useContext(GlobalContext)
 
 	return (
 		<div className={styles.cart}>
@@ -15,7 +15,7 @@ export function Cart() {
 			</Link>
 
 			<div className={styles.text}>
-				<p className={styles.sum}>0 c.</p>
+				<p className={styles.sum}>{cartTotalSum} c.</p>
 				<Link to='cart' className={styles.link}>
 					Оформить заказ
 				</Link>

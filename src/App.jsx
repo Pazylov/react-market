@@ -5,6 +5,7 @@ import CollectionPage from './pages/collectionPage/CollectionPage'
 import { FavoritePage } from './pages/favoritePage/FavoritePage'
 import { HomePage } from './pages/homePage/HomePage'
 import Main from './pages/main/Main'
+import OrderPage from './pages/orderPage/OrderPage'
 
 export function App() {
 	return (
@@ -24,6 +25,7 @@ export function App() {
 
 					<Route path='/favorite' element={<FavoritePage />} />
 				</Route>
+				<Route path='/order' element={<OrderPage />} />
 			</Routes>
 		</div>
 	)

@@ -1,0 +1,11 @@
+.order {
+	@apply flex;
+
+	> .form {
+		@apply mt-5 flex flex-col gap-3;
+
+		> .btn {
+			@apply w-[350px] py-1 text-center bg-[#141414] text-white rounded-[3px];
+		}
+	}
+}

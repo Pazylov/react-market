@@ -1,0 +1,47 @@
+.favorite {
+	@apply w-full mt-5 border-t border-gray-400;
+
+	> .cardItem {
+		@apply py-5 flex gap-5 justify-between items-center border-b border-gray-400;
+
+		> .content {
+			@apply w-2/5 flex gap-5;
+
+			> .image {
+				> img {
+					@apply w-[100px] h-[100px];
+				}
+			}
+
+			> .textContent {
+				@apply flex flex-col gap-3;
+
+				> a {
+					> .name {
+						@apply text-lg font-semibold;
+					}
+
+					> .price {
+						@apply text-base font-medium;
+					}
+				}
+
+				> .addCartBtn {
+					@apply w-fit h-9 flex items-center gap-2 py-[2px] px-3 text-sm font-semibold text-white bg-whiskySour;
+				}
+
+				> .disabledCartBtn {
+					@apply text-sm text-red-500 font-medium;
+				}
+			}
+		}
+
+		> .deleteBtn {
+			@apply size-6 cursor-pointer;
+		}
+	}
+
+	> .emptyText {
+		@apply p-5 text-xl italic font-medium;
+	}
+}

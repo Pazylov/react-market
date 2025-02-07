@@ -27,7 +27,7 @@
 			@apply w-[80px] border border-gray-400 pl-3 rounded-[2px];
 		}
 		> .deleteBtn {
-			@apply size-6;
+			@apply size-6 cursor-pointer;
 		}
 	}
 
@@ -45,4 +45,12 @@
 
 	> .totalPrice {
 	}
+}
+
+.orderBtn {
+	@apply w-[300px] h-auto py-1 text-center bg-[#141414] text-white rounded-[3px];
+}
+
+.disabledOrderBtn {
+	@apply w-[300px] h-auto py-1 text-center bg-gray-500 cursor-auto text-white rounded-[3px];
 }

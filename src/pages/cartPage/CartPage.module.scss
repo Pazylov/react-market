@@ -1,0 +1,48 @@
+.cart {
+	@apply w-full mt-5 border-t border-gray-400;
+
+	> .cardItem {
+		@apply py-5 flex gap-5 justify-between items-center border-b border-gray-400;
+
+		> .content {
+			@apply w-2/5 flex gap-5;
+
+			> .image {
+				@apply w-24 h-auto;
+			}
+
+			> .textContent {
+				@apply flex flex-col gap-3;
+
+				> .name {
+					@apply text-lg font-semibold;
+				}
+
+				> .price {
+					@apply text-base font-medium;
+				}
+			}
+		}
+		> .input {
+			@apply w-[80px] border border-gray-400 pl-3 rounded-[2px];
+		}
+		> .deleteBtn {
+			@apply size-6;
+		}
+	}
+
+	> .emptyText {
+		@apply p-5 text-xl italic font-medium;
+	}
+}
+
+.total {
+	@apply mt-10 p-5 w-[300px] flex  justify-between gap-5 text-lg;
+
+	> .totalDesc {
+		@apply font-semibold;
+	}
+
+	> .totalPrice {
+	}
+}

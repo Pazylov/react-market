@@ -1,5 +1,5 @@
 .accordion {
-	@apply py-3 px-7 text-white text-lg font-semibold bg-accent cursor-pointer;
+	@apply md:py-3 md:px-7 py-2 px-5 text-white md:text-lg text-base font-semibold bg-accent cursor-pointer;
 
 	> .title {
 		@apply flex justify-between items-center;
@@ -11,5 +11,5 @@
 }
 
 .content {
-	@apply py-5 px-7;
+	@apply md:py-5 md:px-7 py-2 px-5;
 }

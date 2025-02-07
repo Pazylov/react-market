@@ -14,7 +14,7 @@
 	}
 
 	> .text {
-		@apply font-medium text-base;
+		@apply hidden md:flex md:flex-col font-medium lg:text-base sm:text-sm;
 
 		> .sum {
 			@apply text-[#000];

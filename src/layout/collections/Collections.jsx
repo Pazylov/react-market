@@ -18,7 +18,7 @@ export function Collections() {
 		if (isInCart) {
 			setCart(prevCart => prevCart.filter(item => item.id !== product.id))
 		} else {
-			setCart(prevCart => [...prevCart, { ...product }])
+			setCart(prevCart => [...prevCart, { ...product, quantity: 1 }])
 		}
 	}
 
@@ -26,7 +26,7 @@ export function Collections() {
 	if (KnivesError) return <NotFoundPage />
 
 	return (
-		<ul className='grid gap-5 grid-cols-3'>
+		<ul className='grid gap-5 justify-center sm:grid-cols-2 xl:grid-cols-3 '>
 			{allKnives && allKnives.length !== 0 ? (
 				allKnives.map(knife => (
 					<Card

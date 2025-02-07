@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { LoadingPage } from '../loading/LoadingPage'
 
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { PiShoppingCartLight } from 'react-icons/pi'
 import { HeartBnt } from '../../components/Btns/HeartBnt'
 import { Rating } from '../../components/Rating'
@@ -13,10 +13,6 @@ export function CardDetailPage() {
 
 	const { productId } = useParams()
 	const product = allKnives.find(knife => knife.id === parseInt(productId))
-
-	useEffect(() => {
-		localStorage.setItem('cart', JSON.stringify(cart))
-	}, [cart])
 
 	const url = 'http://localhost:8000/static/images/knives/'
 
@@ -38,7 +34,7 @@ export function CardDetailPage() {
 		if (isInCart) {
 			setCart(prevCart => prevCart.filter(item => item.id !== product.id))
 		} else {
-			setCart(prevCart => [...prevCart, { ...product }])
+			setCart(prevCart => [...prevCart, { ...product, quantity: 1 }])
 		}
 	}
 
@@ -69,7 +65,7 @@ export function CardDetailPage() {
 									className={styles.rating}
 									rating={product.rating}
 									numberStarts={5}
-									size={'20px'}
+									size={'16px'}
 									spacing={'3px'}
 								/>
 							</div>
@@ -90,10 +86,7 @@ export function CardDetailPage() {
 							</li>
 							<li className={styles.item}>
 								<h4 className={styles.itemTitle}>Торговая марка:</h4>
-								<p className={styles.itemDesc}>
-									{product.trademark} Торговая марка: Торговая марка: Торговая
-									марка:
-								</p>
+								<p className={styles.itemDesc}>{product.trademark}</p>
 							</li>
 							<li className={styles.item}>
 								<h4 className={styles.itemTitle}>Серия:</h4>

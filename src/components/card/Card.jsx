@@ -34,8 +34,10 @@ export function Card({ product, handleToggle }) {
 				<Rating
 					rating={product.rating}
 					numberStarts={5}
-					size={'22px'}
-					spacing={'5px'}
+					// size={'22px'}
+					// spacing={'5px'}
+					size={'18px'}
+					spacing={'3px'}
 				/>
 
 				<div className={styles.container}>

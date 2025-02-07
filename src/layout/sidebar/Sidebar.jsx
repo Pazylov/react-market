@@ -113,12 +113,12 @@ export default function Sidebar() {
 									<Rating
 										rating={item}
 										numberStarts={item}
-										size={'20px'}
-										spacing={'5px'}
+										size={'18px'}
+										spacing={'2px'}
 									/>
 								}
 							/>
-							<p className='text-base font-medium'>{item}/5</p>
+							<p className='md:text-base text-xs font-medium'>{item}/5</p>
 						</li>
 					))}
 				</ul>

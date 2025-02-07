@@ -1,22 +1,23 @@
 .card {
-	@apply relative shadow-card w-auto h-[640px] flex flex-col justify-between;
+	@apply relative shadow-card w-[300px] sm:w-auto h-[460px] sm:h-[500px] md:h-[640px] flex flex-col justify-between;
 
 	> .image {
-		@apply w-full h-[45%] pt-5 px-12 pb-7;
+		@apply grid justify-center w-full h-[45%] pt-3 px-8 pb-5 lg:pt-5 md:px-12 md:pb-7;
 
 		> img {
+			@apply w-[200px] md:w-auto;
 		}
 	}
 
 	> .content {
-		@apply flex flex-col grow justify-end p-5 gap-4;
+		@apply flex flex-col grow justify-end p-4 md:p-5 gap-2 md:gap-4;
 
 		> .name {
-			@apply font-semibold text-xl;
+			@apply font-semibold text-base md:text-xl;
 		}
 
 		> .characteristic {
-			@apply flex items-center justify-between font-semibold text-base;
+			@apply flex items-center justify-between font-semibold text-xs md:text-base;
 
 			> .title {
 			}
@@ -27,18 +28,18 @@
 		}
 
 		> .container {
-			@apply flex  pt-5 items-center justify-between border-t border-solid border-[#14141480];
+			@apply flex pt-4 md:pt-5 items-center justify-between border-t border-solid border-[#14141480];
 
 			> .price {
-				@apply font-semibold text-xl;
+				@apply font-semibold text-base md:text-xl;
 			}
 		}
 		> .btn {
-			@apply w-[95%] h-11 mt-1 mx-auto flex items-center justify-center gap-2 py-[2px] text-lg font-semibold text-white bg-whiskySour;
+			@apply w-[95%] h-9 md:h-11 mt-1 mx-auto flex items-center justify-center gap-2 py-[2px] md:text-lg font-semibold text-white bg-whiskySour;
 		}
 
 		> .disabledBtn {
-			@apply text-xl text-center text-red-500 font-medium;
+			@apply md:text-xl text-center text-red-500 font-medium;
 		}
 	}
 }

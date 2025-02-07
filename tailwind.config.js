@@ -3,6 +3,9 @@ export default {
 	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		extend: {
+			screens: {
+				xs: '576px',
+			},
 			boxShadow: {
 				card: ' 0 4px 20px 0 rgba(0, 0, 0, 0.1);',
 			},
@@ -16,7 +19,7 @@ export default {
 			},
 			gridTemplateColumns: {
 				sidebar: '23% 1fr',
-				lgSidebar: '33% 1fr',
+				bigSidebar: '30% 1fr',
 			},
 			gridTemplateRows: {
 				images: '1fr, 25%',

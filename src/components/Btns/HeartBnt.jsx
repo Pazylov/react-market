@@ -22,9 +22,9 @@ export function HeartBnt({ product }) {
 	return (
 		<button onClick={() => handleCartToggle(product)}>
 			{favorite.some(item => item.id === product.id) ? (
-				<IoHeartSharp className='size-7 text-whiskySour cursor-pointer' />
+				<IoHeartSharp className='size-5 xs:size-6 md:size-7 text-whiskySour cursor-pointer' />
 			) : (
-				<IoHeartOutline className='size-7 text-whiskySour cursor-pointer' />
+				<IoHeartOutline className='size-5 xs:size-6 md:size-7 text-whiskySour cursor-pointer' />
 			)}
 		</button>
 	)

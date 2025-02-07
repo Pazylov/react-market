@@ -2,7 +2,7 @@
 	@apply w-full h-[90px] flex items-center justify-between;
 
 	> .logo {
-		@apply w-auto h-10;
+		@apply w-auto md:h-10 h-9;
 
 		> img {
 			@apply w-full h-full;
@@ -10,10 +10,10 @@
 	}
 
 	> .navList {
-		@apply flex gap-5;
+		@apply hidden md:flex gap-5;
 
 		> .navItem {
-			@apply after:content-[''] relative text-lg font-medium;
+			@apply after:content-[''] relative sm:text-base lg:text-lg font-medium;
 
 			&::after {
 				@apply absolute bottom-[-3px] left-0 w-0 h-[2px] bg-whiskySour transition-all duration-300;
@@ -42,5 +42,38 @@
 				@apply absolute right-[-5px] top-[-5px] w-5 content-center text-center leading-4 bg-whiskySour text-white aspect-square rounded-full text-[12px];
 			}
 		}
+
+		> .smMenuBtn {
+			@apply md:hidden flex size-7 cursor-pointer;
+		}
+	}
+
+	/* --------------------- */
+	> .smMenu {
+		@apply absolute w-full top-0 right-0 bottom-0 overflow-hidden z-50 bg-white transition-all;
+
+		> .smContainer {
+			@apply flex flex-col font-medium;
+
+			> .backBtn {
+				@apply flex items-center gap-2 p-3 cursor-pointer;
+
+				> svg {
+					@apply size-7 cursor-pointer;
+				}
+			}
+
+			> .smNav {
+				@apply py-2 pl-6 border;
+
+				&.active {
+					@apply bg-[#141414] text-white;
+				}
+			}
+		}
+	}
+
+	> .none {
+		@apply w-0;
 	}
 }

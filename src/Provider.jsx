@@ -132,6 +132,10 @@ export const GlobalPRovider = ({ children }) => {
 		setCartTotalSum(total)
 	}, [cart])
 
+	useEffect(() => {
+		localStorage.setItem('cart', JSON.stringify(cart))
+	}, [cart])
+
 	const value = {
 		allKnives,
 		allSteel,

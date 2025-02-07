@@ -3,12 +3,12 @@ export function InputCheckbox({ label, value, name, onChange }) {
 		<div className='flex items-center'>
 			<input
 				value={value}
-				className='size-4 mr-4'
+				className='md:size-4 size-3 md:mr-4 mr-3'
 				type='checkbox'
 				name={name}
 				onChange={onChange}
 			/>
-			<label className='text-base font-medium'>{label}</label>
+			<label className='md:text-base text-xs font-medium'>{label}</label>
 		</div>
 	)
 }

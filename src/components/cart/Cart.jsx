@@ -15,7 +15,7 @@ export function Cart() {
 			</Link>
 
 			<div className={styles.text}>
-				<p className={styles.sum}>{cartTotalSum} c.</p>
+				<p className={styles.sum}>{cartTotalSum.toFixed(2)} c.</p>
 				<Link to='cart' className={styles.link}>
 					Оформить заказ
 				</Link>

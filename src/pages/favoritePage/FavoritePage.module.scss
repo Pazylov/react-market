@@ -9,7 +9,7 @@
 
 			> .image {
 				> img {
-					@apply w-[100px] h-[100px];
+					@apply w-auto h-[100px];
 				}
 			}
 
@@ -31,7 +31,7 @@
 				}
 
 				> .disabledCartBtn {
-					@apply text-sm text-red-500 font-medium;
+					@apply text-lg text-red-500 font-medium;
 				}
 			}
 		}

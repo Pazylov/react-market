@@ -10,12 +10,14 @@ import styles from './Card.module.scss'
 export function Card({ product, handleToggle }) {
 	const { cart } = useContext(GlobalContext)
 
+	const url = 'http://localhost:8000/static/images/knives/'
+
 	return (
 		<li className={styles.card}>
 			<Discount discount={product.discount} />
 
 			<Link className={styles.image} to={`knife/${product.id}`}>
-				<img src='card/knife.png' alt='01' />
+				<img src={`${url}${product.image}`} alt={product.name} />
 			</Link>
 
 			<div className={styles.content}>

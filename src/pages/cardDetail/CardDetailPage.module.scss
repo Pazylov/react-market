@@ -1,24 +1,24 @@
 .cardDetail {
-	@apply mt-5 w-full 2xl:h-[750px] grid lg:grid-cols-[60%_1fr] xl:grid-cols-2 gap-7;
+	@apply mt-5 w-full h-full grid lg:grid-cols-[60%_1fr] xl:grid-cols-2  gap-4 2xl:gap-7;
 
 	> .gallery {
-		@apply w-full h-full grid grid-rows-images gap-4;
+		@apply w-full h-full grid grid-rows-images gap-2 2xl:gap-4;
 
 		> .bigImage {
-			@apply w-full h-full;
+			@apply w-full h-full shadow-card;
 		}
 
 		> .imagesList {
-			@apply grid grid-cols-4 gap-4 flex-wrap;
+			@apply w-full h-full grid grid-cols-4 gap-2 2xl:gap-4 flex-wrap;
 
 			> .imagesItem {
-				@apply w-full h-full;
+				@apply w-full h-full shadow-card;
 			}
 		}
 	}
 
 	> .characteristic {
-		@apply w-full h-full shadow-card p-7;
+		@apply w-full h-full shadow-card p-5 xl:p-7;
 
 		> .topContent {
 			@apply flex flex-col gap-3 pb-7 border-b border-solid border-[#14141426];
@@ -67,7 +67,7 @@
 			@apply mt-3 md:mt-7;
 
 			> .price {
-				@apply text-xl sm:text-2xl md:text-3xl font-bold;
+				@apply mb-3 text-xl sm:text-2xl md:text-3xl font-bold;
 			}
 
 			> .bottomContainer {

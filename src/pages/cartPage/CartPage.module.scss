@@ -2,13 +2,13 @@
 	@apply w-full mt-5 border-t border-gray-400;
 
 	> .cardItem {
-		@apply py-5 flex gap-5 justify-between items-center border-b border-gray-400;
+		@apply py-5 flex flex-col sm:flex-row gap-5 justify-between sm:items-center items-stretch border-b border-gray-400;
 
 		> .content {
-			@apply w-2/5 flex gap-5;
+			@apply w-auto flex gap-5;
 
 			> .image {
-				@apply w-24 h-auto;
+				@apply w-auto sm:h-[100px] h-[80px];
 			}
 
 			> .textContent {
@@ -23,11 +23,17 @@
 				}
 			}
 		}
-		> .input {
-			@apply w-[80px] border border-gray-400 pl-3 rounded-[2px];
-		}
-		> .deleteBtn {
-			@apply size-6 cursor-pointer;
+
+		> .container {
+			@apply sm:w-2/5 w-full flex items-center gap-[100px] sm:justify-between;
+
+			> .input {
+				@apply w-[80px] border border-gray-400 pl-3 rounded-[2px];
+			}
+
+			> .deleteBtn {
+				@apply size-6 cursor-pointer;
+			}
 		}
 	}
 
@@ -37,7 +43,7 @@
 }
 
 .total {
-	@apply mt-10 p-5 w-[300px] flex  justify-between gap-5 text-lg;
+	@apply mt-5 sm:mt-10 sm:w-[300px] w-[220px] flex  justify-between gap-5 sm:text-lg text-base;
 
 	> .totalDesc {
 		@apply font-semibold;
@@ -48,9 +54,9 @@
 }
 
 .orderBtn {
-	@apply w-[300px] h-auto py-1 text-center bg-[#141414] text-white rounded-[3px];
+	@apply mt-5 sm:w-[300px] w-[220px] h-auto py-1 text-center bg-[#141414] text-white rounded-[3px] sm:text-base text-xs;
 }
 
 .disabledOrderBtn {
-	@apply w-[300px] h-auto py-1 text-center bg-gray-500 cursor-auto text-white rounded-[3px];
+	@apply mt-5 sm:w-[300px] w-[220px] h-auto py-1 text-center bg-gray-500 cursor-auto text-white rounded-[3px] sm:text-base text-xs;
 }

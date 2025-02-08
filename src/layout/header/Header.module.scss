@@ -13,7 +13,7 @@
 		@apply hidden md:flex gap-5;
 
 		> .navItem {
-			@apply after:content-[''] relative sm:text-base lg:text-lg font-medium;
+			@apply after:content-[''] uppercase relative sm:text-base lg:text-lg font-medium;
 
 			&::after {
 				@apply absolute bottom-[-3px] left-0 w-0 h-[2px] bg-whiskySour transition-all duration-300;
@@ -64,7 +64,7 @@
 			}
 
 			> .smNav {
-				@apply py-2 pl-6 border;
+				@apply py-2 pl-6 border uppercase;
 
 				&.active {
 					@apply bg-[#141414] text-white;

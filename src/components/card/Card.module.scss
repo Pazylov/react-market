@@ -1,8 +1,8 @@
 .card {
-	@apply relative shadow-card w-[300px] sm:w-auto h-[460px] sm:h-[500px] md:h-[640px] flex flex-col justify-between;
+	@apply relative shadow-card w-[300px] sm:w-auto h-[460px] sm:h-[500px] md:h-[600px] flex flex-col justify-between;
 
 	> .image {
-		@apply grid justify-center w-full h-[45%] pt-3 px-8 pb-5 lg:pt-5 md:px-12 md:pb-7;
+		@apply grid justify-center items-center w-full h-[45%] pt-3 px-8 pb-5 lg:pt-5 md:px-12 md:pb-7;
 
 		> img {
 			@apply w-[200px] md:w-auto;
@@ -39,7 +39,7 @@
 		}
 
 		> .disabledBtn {
-			@apply md:text-xl text-center text-red-500 font-medium;
+			@apply h-9 md:h-11 mt-1 md:text-xl text-center text-red-500 font-medium;
 		}
 	}
 }

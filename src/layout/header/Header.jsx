@@ -26,7 +26,7 @@ export function Header() {
 						}
 						to='/'
 					>
-						HOME
+						Главная
 					</NavLink>
 
 					<NavLink
@@ -35,7 +35,7 @@ export function Header() {
 						}
 						to='/collection'
 					>
-						COLLECTION
+						Коллекции
 					</NavLink>
 				</ul>
 
@@ -61,7 +61,7 @@ export function Header() {
 					<div className={styles.smContainer}>
 						<div onClick={() => setVisible(false)} className={styles.backBtn}>
 							<IoClose />
-							<p>Close</p>
+							<p>Закрыть</p>
 						</div>
 						<NavLink
 							onClick={() => setVisible(false)}
@@ -70,7 +70,7 @@ export function Header() {
 							}
 							to='/'
 						>
-							HOME
+							Главная
 						</NavLink>
 						<NavLink
 							onClick={() => setVisible(false)}
@@ -79,7 +79,7 @@ export function Header() {
 							}
 							to='/collection'
 						>
-							COLLECTION
+							Коллекции
 						</NavLink>
 					</div>
 				</div>

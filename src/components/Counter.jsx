@@ -1,16 +1,11 @@
-import { useContext } from 'react'
-import { GlobalContext } from '../Provider'
-
-export function Counter({ count, setCount }) {
-	const { cart, setCart } = useContext(GlobalContext)
-
+export function Counter({ quantity, setQuantity }) {
 	const decrement = () => {
 		{
-			count === 1 ? setCount(count) : setCount(count - 1)
+			quantity === 1 ? setQuantity(quantity) : setQuantity(quantity - 1)
 		}
 	}
 	const increment = () => {
-		setCount(count + 1)
+		setQuantity(quantity + 1)
 	}
 
 	return (
@@ -22,7 +17,7 @@ export function Counter({ count, setCount }) {
 				-
 			</button>
 			<h5 className=' w-[70px] py-[10px] px-5 text-center text-2xl font-medium text-accent bg-[#d2d2d212]'>
-				{count}
+				{quantity}
 			</h5>
 			<button
 				onClick={increment}

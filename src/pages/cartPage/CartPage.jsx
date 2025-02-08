@@ -7,6 +7,8 @@ import styles from './CartPage.module.scss'
 export function CartPage() {
 	const { cart, setCart, cartTotalSum } = useContext(GlobalContext)
 
+	const url = 'http://localhost:8000/static/images/knives/'
+
 	const handleCartToggle = id => {
 		setCart(cart.filter(item => item.id !== id))
 	}
@@ -33,7 +35,7 @@ export function CartPage() {
 								>
 									<img
 										className={styles.image}
-										src='card/knife.png'
+										src={`${url}${item.image}`}
 										alt={item.name}
 									/>
 									<div className={styles.textContent}>
@@ -43,20 +45,22 @@ export function CartPage() {
 										</p>
 									</div>
 								</Link>
-								<input
-									className={styles.input}
-									type='number'
-									value={item.quantity}
-									min={1}
-									onChange={e => {
-										const newQuantity = Number(e.target.value)
-										updateQuantity(item.id, newQuantity)
-									}}
-								/>
-								<RiDeleteBin6Line
-									onClick={() => handleCartToggle(item.id)}
-									className={styles.deleteBtn}
-								/>
+								<div className={styles.container}>
+									<input
+										className={styles.input}
+										type='number'
+										value={item.quantity}
+										min={1}
+										onChange={e => {
+											const newQuantity = Number(e.target.value)
+											updateQuantity(item.id, newQuantity)
+										}}
+									/>
+									<RiDeleteBin6Line
+										onClick={() => handleCartToggle(item.id)}
+										className={styles.deleteBtn}
+									/>
+								</div>
 							</div>
 						))
 					) : (
@@ -68,12 +72,12 @@ export function CartPage() {
 					<p className={styles.totalPrice}>{cartTotalSum.toFixed(2)} c</p>
 				</div>
 
-				{cart.length !== 0 ? (
+				{cart.length === 0 || cartTotalSum === 0 ? (
+					<button className={styles.disabledOrderBtn}>Оформить заказ</button>
+				) : (
 					<Link to='/order' className={styles.orderBtn}>
 						<button>Оформить заказ</button>
 					</Link>
-				) : (
-					<button className={styles.disabledOrderBtn}>Оформить заказ</button>
 				)}
 			</div>
 		</>

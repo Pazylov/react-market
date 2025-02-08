@@ -8,6 +8,7 @@ import styles from './FavoritePage.module.scss'
 
 export function FavoritePage() {
 	const { cart, setCart, favorite, setFavorite } = useContext(GlobalContext)
+	const url = 'http://localhost:8000/static/images/knives/'
 
 	const handleFavoriteToggle = id => {
 		setFavorite(favorite.filter(item => item.id !== id))
@@ -36,11 +37,7 @@ export function FavoritePage() {
 										className={styles.image}
 										to={`/collection/knife/${item.id}`}
 									>
-										<img
-											className={styles.image}
-											src='card/knife.png'
-											alt={item.name}
-										/>
+										<img src={`${url}${item.image}`} alt={item.name} />
 									</Link>
 									<div className={styles.textContent}>
 										<Link to={`/collection/knife/${item.id}`}>

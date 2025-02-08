@@ -1,15 +1,17 @@
 import { Link, useParams } from 'react-router-dom'
 import { LoadingPage } from '../loading/LoadingPage'
 
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { PiShoppingCartLight } from 'react-icons/pi'
 import { HeartBnt } from '../../components/Btns/HeartBnt'
+import { Counter } from '../../components/Counter'
 import { Rating } from '../../components/Rating'
 import { GlobalContext } from '../../Provider'
 import styles from './CardDetailPage.module.scss'
 
 export function CardDetailPage() {
 	const { allKnives, cart, setCart } = useContext(GlobalContext)
+	const [quantity, setQuantity] = useState(1)
 
 	const { productId } = useParams()
 	const product = allKnives.find(knife => knife.id === parseInt(productId))
@@ -34,7 +36,7 @@ export function CardDetailPage() {
 		if (isInCart) {
 			setCart(prevCart => prevCart.filter(item => item.id !== product.id))
 		} else {
-			setCart(prevCart => [...prevCart, { ...product, quantity: 1 }])
+			setCart(prevCart => [...prevCart, { ...product, quantity: quantity }])
 		}
 	}
 
@@ -96,6 +98,12 @@ export function CardDetailPage() {
 					</div>
 					<div className={styles.bottomContent}>
 						<h3 className={styles.price}>{product.price.toFixed(2)} c</h3>
+
+						{cart.some(item => item.id === product.id) ? (
+							''
+						) : (
+							<Counter quantity={quantity} setQuantity={setQuantity} />
+						)}
 
 						<div className={styles.bottomContainer}>
 							{product.inStock ? (

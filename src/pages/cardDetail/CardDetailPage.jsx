@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { LoadingPage } from '../loading/LoadingPage'
 
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { PiShoppingCartLight } from 'react-icons/pi'
 import { HeartBnt } from '../../components/Btns/HeartBnt'
 import { Counter } from '../../components/Counter'
@@ -11,12 +11,24 @@ import styles from './CardDetailPage.module.scss'
 
 export function CardDetailPage() {
 	const { allKnives, cart, setCart } = useContext(GlobalContext)
-	const [quantity, setQuantity] = useState(1)
 
 	const { productId } = useParams()
-	const product = allKnives.find(knife => knife.id === parseInt(productId))
+	const product = allKnives.find(knife => knife.id === parseInt(productId, 10))
+
+	const [quantity, setQuantity] = useState(1)
+	const [selectedImage, setSelectedImage] = useState('')
+
+	useEffect(() => {
+		if (product?.images?.length) {
+			setSelectedImage(product.image)
+		}
+	}, [product])
 
 	const url = 'http://localhost:8000/static/images/knives/'
+
+	if (!product) {
+		return <LoadingPage />
+	}
 
 	if (!product) {
 		return (
@@ -24,10 +36,6 @@ export function CardDetailPage() {
 				нож не найден <Link to='/'>Назад</Link>{' '}
 			</p>
 		)
-	}
-
-	if (!product || product.length === 0) {
-		return <LoadingPage />
 	}
 
 	const handleCartToggle = product => {
@@ -44,14 +52,22 @@ export function CardDetailPage() {
 		<>
 			<div className={styles.cardDetail}>
 				<div className={styles.gallery}>
-					<img
-						className={styles.bigImage}
-						src={`${url}${product.image}`}
-						alt={product.name}
-					/>
+					{selectedImage && (
+						<img
+							className={styles.bigImage}
+							src={`${url}${selectedImage}`}
+							alt={product.name}
+						/>
+					)}
 					<ul className={styles.imagesList}>
 						{product.images.map(image => (
-							<li className={styles.imagesItem} key={image}>
+							<li
+								onClick={() => setSelectedImage(image)}
+								className={`${styles.imagesItem} ${
+									selectedImage === image ? styles.active : ''
+								}`}
+								key={image}
+							>
 								<img src={`${url}${image}`} alt={image} />
 							</li>
 						))}
@@ -99,7 +115,7 @@ export function CardDetailPage() {
 					<div className={styles.bottomContent}>
 						<h3 className={styles.price}>{product.price.toFixed(2)} c</h3>
 
-						{cart.some(item => item.id === product.id) ? (
+						{cart.some(item => item.id === product.id) || !product.inStock ? (
 							''
 						) : (
 							<Counter quantity={quantity} setQuantity={setQuantity} />

@@ -22,7 +22,7 @@ export default {
 				bigSidebar: '30% 1fr',
 			},
 			gridTemplateRows: {
-				images: '3fr, 1fr',
+				images: '1fr, auto',
 			},
 		},
 	},

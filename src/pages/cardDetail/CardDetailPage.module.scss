@@ -1,18 +1,30 @@
 .cardDetail {
-	@apply mt-5 w-full h-full grid lg:grid-cols-[60%_1fr] xl:grid-cols-2  gap-4 2xl:gap-7;
+	@apply mt-5 w-full h-full grid lg:grid-cols-[60%_1fr] xl:grid-cols-2 gap-4 2xl:gap-7;
 
 	> .gallery {
-		@apply w-full h-full grid grid-rows-images gap-2 2xl:gap-4;
+		@apply w-full h-full grid grid-rows-images gap-2;
 
 		> .bigImage {
 			@apply w-full h-full shadow-card;
 		}
 
 		> .imagesList {
-			@apply w-full h-full grid grid-cols-4 gap-2 2xl:gap-4 flex-wrap;
+			@apply w-full h-full grid grid-cols-4 gap-2  flex-wrap;
 
 			> .imagesItem {
-				@apply w-full h-full shadow-card;
+				@apply w-full h-full shadow-card cursor-pointer overflow-hidden;
+
+				&.active {
+					@apply border border-solid border-whiskySour;
+				}
+
+				> img {
+					@apply transition-transform ease-linear;
+
+					&:hover {
+						@apply scale-125;
+					}
+				}
 			}
 		}
 	}

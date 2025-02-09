@@ -36,7 +36,9 @@ export function Collections() {
 					/>
 				))
 			) : (
-				<p>Товаров нет</p>
+				<p className='mt-3 md:mt-5 text-sm sm:text-base md:text-lg font-medium'>
+					Товаров нет
+				</p>
 			)}
 		</ul>
 	)

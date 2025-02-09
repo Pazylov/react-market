@@ -4,22 +4,38 @@
 	> .gallery {
 		@apply w-full h-full grid grid-rows-images gap-2;
 
-		> .bigImage {
+		.bigImage {
 			@apply w-full h-full shadow-card;
 		}
 
 		> .imagesList {
-			@apply w-full h-full grid grid-cols-4 gap-2  flex-wrap;
+			@apply relative w-full h-full shadow-card;
 
-			> .imagesItem {
-				@apply w-full h-full shadow-card cursor-pointer overflow-hidden;
+			> .customNext {
+				@apply w-8 h-8  xs:w-10 xs:h-10 z-10 absolute top-1/2 right-0 translate-y-50 cursor-pointer;
+
+				svg {
+					@apply size-full text-whiskySour;
+				}
+			}
+
+			> .customPrev {
+				@apply w-8 h-8 xs:w-10 xs:h-10 z-10 absolute top-1/2 left-0 translate-y-50 cursor-pointer;
+
+				svg {
+					@apply rotate-180 size-full text-whiskySour;
+				}
+			}
+
+			.imagesItem {
+				@apply w-full h-full shadow-card overflow-hidden transition-all duration-300;
 
 				&.active {
-					@apply border border-solid border-whiskySour;
+					@apply border border-solid border-whiskySour z-10;
 				}
 
-				> img {
-					@apply transition-transform ease-linear;
+				img {
+					@apply w-full h-full object-cover transition-transform duration-300 ease-in-out;
 
 					&:hover {
 						@apply scale-125;

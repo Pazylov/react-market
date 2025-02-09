@@ -3,6 +3,12 @@ import { LoadingPage } from '../loading/LoadingPage'
 
 import { useContext, useEffect, useState } from 'react'
 import { PiShoppingCartLight } from 'react-icons/pi'
+
+import 'swiper/css/bundle'
+import { Navigation } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+import { MdOutlineNavigateNext } from 'react-icons/md'
 import { HeartBnt } from '../../components/Btns/HeartBnt'
 import { Counter } from '../../components/Counter'
 import { Rating } from '../../components/Rating'
@@ -17,6 +23,11 @@ export function CardDetailPage() {
 
 	const [quantity, setQuantity] = useState(1)
 	const [selectedImage, setSelectedImage] = useState('')
+
+	const navigation = {
+		nextEl: '.customNext',
+		prevEl: '.customPrev',
+	}
 
 	useEffect(() => {
 		if (product?.images?.length) {
@@ -59,9 +70,24 @@ export function CardDetailPage() {
 							alt={product.name}
 						/>
 					)}
-					<ul className={styles.imagesList}>
+
+					<Swiper
+						slidesPerView={3.4}
+						spaceBetween={5}
+						// cssMode={false}
+						navigation={navigation}
+						modules={[Navigation]}
+						className={styles.imagesList}
+					>
+						<button className={`${styles.customNext} customNext`}>
+							<MdOutlineNavigateNext />
+						</button>
+						<button className={`${styles.customPrev} customPrev`}>
+							<MdOutlineNavigateNext />
+						</button>
+
 						{product.images.map(image => (
-							<li
+							<SwiperSlide
 								onClick={() => setSelectedImage(image)}
 								className={`${styles.imagesItem} ${
 									selectedImage === image ? styles.active : ''
@@ -69,9 +95,9 @@ export function CardDetailPage() {
 								key={image}
 							>
 								<img src={`${url}${image}`} alt={image} />
-							</li>
+							</SwiperSlide>
 						))}
-					</ul>
+					</Swiper>
 				</div>
 
 				<div className={styles.characteristic}>

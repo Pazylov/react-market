@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react'
-import { Card } from '../../components/card/Card'
+import { Card } from '../../components/cards/collectionCard/Card'
 import { LoadingPage } from '../../pages/loading/LoadingPage'
 import { NotFoundPage } from '../../pages/notFoundPage/notFoundPage'
 import { GlobalContext } from '../../Provider'

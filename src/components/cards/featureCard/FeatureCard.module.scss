@@ -1,0 +1,30 @@
+.card {
+	@apply w-full h-[290px] shadow-card p-7 overflow-hidden;
+
+	> .title {
+		@apply relative text-2xl font-semibold after:content-[""];
+
+		&:after {
+			@apply absolute left-0 bottom-[-15px] w-[70px] h-[2px] bg-whiskySour;
+		}
+	}
+
+	> .container {
+		@apply w-full h-full relative flex;
+
+		> .list {
+			@apply mt-8 flex flex-col gap-3;
+
+			> .item {
+				@apply flex gap-3 items-center text-lg font-medium;
+
+				> .itemMarker {
+					@apply w-[6px] h-[6px] rounded-full bg-whiskySour;
+				}
+			}
+		}
+		> .img {
+			@apply w-auto h-auto absolute bottom-[-20px] right-[-55px] object-cover;
+		}
+	}
+}

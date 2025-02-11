@@ -1,10 +1,10 @@
 import { useContext } from 'react'
 import { PiShoppingCartLight } from 'react-icons/pi'
 import { Link } from 'react-router-dom'
-import { GlobalContext } from '../../Provider'
-import { HeartBnt } from '../Btns/HeartBnt'
-import { Discount } from '../Discount'
-import { Rating } from '../Rating'
+import { GlobalContext } from '../../../Provider'
+import { HeartBnt } from '../../Btns/HeartBnt'
+import { Discount } from '../../Discount'
+import { Rating } from '../../Rating'
 import styles from './Card.module.scss'
 
 export function Card({ product, handleToggle }) {

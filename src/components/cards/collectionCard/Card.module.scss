@@ -35,7 +35,7 @@
 			}
 		}
 		> .btn {
-			@apply w-[95%] h-9 md:h-11 mt-1 mx-auto flex items-center justify-center gap-2 py-[2px] md:text-lg font-semibold text-white bg-whiskySour;
+			@apply w-[95%] h-9 md:h-11 mt-1 mx-auto flex items-center justify-center gap-2 py-[2px] md:text-lg font-semibold text-white bg-whiskySour hover:shadow-btnHover transition-all duration-300;
 		}
 
 		> .disabledBtn {

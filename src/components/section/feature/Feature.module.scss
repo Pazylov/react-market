@@ -1,0 +1,6 @@
+.feature {
+	@apply mt-[150px] mb-[120px];
+	> .list {
+		@apply w-full h-auto grid grid-cols-3 gap-7;
+	}
+}

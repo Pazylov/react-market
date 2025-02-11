@@ -23,7 +23,9 @@ export function CartPage() {
 
 	return (
 		<>
-			<h1 className=' mt-5 text-3xl italic ml-10'>Корзина</h1>
+			<h1 className='mt-5 text-3xl italic ml-10 text-whiskySour font-medium tracking-[2px]'>
+				Корзина
+			</h1>
 			<div className='flex flex-col items-end'>
 				<div className={styles.cart}>
 					{cart.length !== 0 ? (

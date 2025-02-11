@@ -1,0 +1,75 @@
+.mainBgImage {
+	@apply w-full h-[800px] absolute top-[90px] left-0 right-0 bg-mainBgImage bg-cover bg-no-repeat bg-left-bottom opacity-15;
+}
+
+.decorLine {
+	@apply grid grid-cols-4 w-full h-[800px] absolute top-[90px] left-0 right-0;
+
+	> .item {
+		@apply w-full h-full list-none flex gap-[125px] justify-center;
+
+		> .line {
+			@apply w-[1px] h-full bg-white opacity-10;
+		}
+	}
+}
+
+.bg {
+	@apply w-full h-[800px] absolute top-[90px] left-0 right-0 bg-[#141414] z-[-1];
+}
+
+.mainContent {
+	@apply w-full h-[520px] absolute top-[90px] left-0 right-0 mt-12 container mx-auto px-4 z-2 flex justify-between gap-[100px] text-white opacity-100;
+
+	> .left {
+		@apply w-[70%] h-auto;
+
+		> .title {
+			@apply font-bold text-4xl;
+		}
+
+		> .subTitle {
+			@apply mt-3 text-4xl font-medium;
+		}
+
+		> .text {
+			@apply mt-7 font-medium text-xl text-white/70;
+		}
+
+		> .link {
+			@apply inline-block content-center w-auto h-[50px] mt-[60px] text-xl text-center font-semibold bg-whiskySour cursor-pointer px-[50px] rounded-[3px] shadow-btn transition-all duration-300 hover:shadow-btnHover;
+		}
+	}
+
+	> .right {
+		@apply relative w-[30%] h-auto;
+
+		> .knivesImg {
+			@apply w-auto h-[520px] absolute z-4 top-0 left-0;
+		}
+
+		> .circleBlur {
+			@apply absolute z-2 top-0 left-[50px] w-[540px] h-[540px] rounded-full bg-white/10 blur-[70px];
+		}
+
+		> .halfCircle {
+			@apply absolute z-3 top-9 left-[220px] w-auto h-auto;
+
+			svg {
+				@apply w-[350px] h-full;
+			}
+		}
+
+		> .star1 {
+			@apply absolute top-[170px] left-[70px];
+		}
+
+		> .star2 {
+			@apply absolute top-[30px] right-0;
+		}
+
+		> .star3 {
+			@apply absolute bottom-[120px] right-0;
+		}
+	}
+}

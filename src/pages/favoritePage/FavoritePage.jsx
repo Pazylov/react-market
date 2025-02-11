@@ -26,7 +26,9 @@ export function FavoritePage() {
 
 	return (
 		<>
-			<h1 className=' mt-5 text-3xl italic ml-10'>Избранные</h1>
+			<h1 className=' mt-5 text-3xl italic ml-10 text-whiskySour font-medium tracking-[2px]'>
+				Избранные
+			</h1>
 			<div className='flex flex-col items-end'>
 				<div className={styles.favorite}>
 					{favorite.length > 0 ? (

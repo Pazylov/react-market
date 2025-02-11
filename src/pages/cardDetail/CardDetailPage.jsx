@@ -74,7 +74,6 @@ export function CardDetailPage() {
 					<Swiper
 						slidesPerView={3.4}
 						spaceBetween={5}
-						// cssMode={false}
 						navigation={navigation}
 						modules={[Navigation]}
 						className={styles.imagesList}

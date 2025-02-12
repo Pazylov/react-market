@@ -7,16 +7,26 @@ import { Discount } from '../../Discount'
 import { Rating } from '../../Rating'
 import styles from './Card.module.scss'
 
-export function Card({ product, handleToggle }) {
-	const { cart } = useContext(GlobalContext)
+export function Card({ product }) {
+	const { cart, setCart } = useContext(GlobalContext)
 
 	const url = 'http://localhost:8000/static/images/knives/'
+
+	const handleCartToggle = product => {
+		const isInCart = cart.some(item => item.id === product.id)
+
+		if (isInCart) {
+			setCart(prevCart => prevCart.filter(item => item.id !== product.id))
+		} else {
+			setCart(prevCart => [...prevCart, { ...product, quantity: 1 }])
+		}
+	}
 
 	return (
 		<li className={styles.card}>
 			<Discount discount={product.discount} />
 
-			<Link className={styles.image} to={`knife/${product.id}`}>
+			<Link className={styles.image} to={`/collection/knife/${product.id}`}>
 				<img src={`${url}${product.image}`} alt={product.name} />
 			</Link>
 
@@ -47,7 +57,10 @@ export function Card({ product, handleToggle }) {
 				</div>
 
 				{product.inStock ? (
-					<button onClick={() => handleToggle(product)} className={styles.btn}>
+					<button
+						onClick={() => handleCartToggle(product)}
+						className={styles.btn}
+					>
 						{cart.some(item => item.id === product.id)
 							? 'Удалить из корзины'
 							: 'Добавить в корзину'}

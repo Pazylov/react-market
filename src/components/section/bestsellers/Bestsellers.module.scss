@@ -1,0 +1,23 @@
+.bestsellers {
+	@apply relative mb-[150px];
+
+	> .container {
+		@apply flex items-center justify-between;
+
+		> .title {
+			@apply font-bold text-3xl tracking-wider;
+		}
+
+		> .link {
+			@apply flex items-center gap-1 font-semibold text-lg tracking-wider text-whiskySour;
+
+			svg {
+				@apply size-5;
+			}
+		}
+	}
+
+	> .list {
+		@apply mt-14 grid grid-cols-4 gap-5;
+	}
+}

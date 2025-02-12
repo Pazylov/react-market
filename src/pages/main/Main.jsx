@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import Advantages from '../../components/section/advantages/Advantages'
+import Bestsellers from '../../components/section/bestsellers/Bestsellers'
 import Feature from '../../components/section/feature/Feature'
+import Stock from '../../components/section/stock/Stock'
 import Stars from '../../components/Stars'
 import styles from './Main.module.scss'
 
@@ -76,6 +78,8 @@ export default function Main() {
 			</section>
 
 			<Feature />
+			<Bestsellers />
+			<Stock />
 		</>
 	)
 }

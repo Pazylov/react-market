@@ -7,7 +7,7 @@ export const ADVANTAGES_ITEMS = [
 	{
 		id: 2,
 		img: '/public/main/advantages2.png',
-		text: 'Доставка по России, Казахстану и Белоруссии',
+		text: 'Доставка по Кыргызстану, Казахстану и России.',
 	},
 	{
 		id: 3,

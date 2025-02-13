@@ -70,7 +70,7 @@ export function CartPage() {
 					)}
 				</div>
 				<div className={styles.total}>
-					<p className={styles.totalDesc}>Итого:</p>
+					<p className={styles.totalDesc}>Итого сумма заказа:</p>
 					<p className={styles.totalPrice}>{cartTotalSum.toFixed(2)} c</p>
 				</div>
 

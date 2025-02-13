@@ -11,6 +11,7 @@ export default {
 			},
 			backgroundImage: {
 				mainBgImage: "url('/main/main-bg.jpg')",
+				footerBgImage: "url('/main/footer/footer-bg.png')",
 			},
 			translate: {
 				50: '-50%',

@@ -13,8 +13,8 @@ export function Header() {
 	const [visible, setVisible] = useState(false)
 
 	return (
-		<>
-			<header className={styles.header}>
+		<header className='container mx-auto px-4'>
+			<div className={styles.header}>
 				<Link className={styles.logo} to='/'>
 					<img src='/header/logo.png' alt='ZLATMAX' />
 				</Link>
@@ -83,7 +83,7 @@ export function Header() {
 						</NavLink>
 					</div>
 				</div>
-			</header>
-		</>
+			</div>
+		</header>
 	)
 }

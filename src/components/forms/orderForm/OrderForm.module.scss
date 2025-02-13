@@ -1,0 +1,15 @@
+.form {
+	@apply pt-8 mt-5 w-full flex flex-col items-center gap-3 border-t border-gray-400;
+
+	> .container {
+		@apply w-1/2;
+	}
+
+	> .btn {
+		@apply w-[300px] py-2 tracking-widest text-center  text-white font-medium bg-whiskySour hover:shadow-btnHover transition-all duration-300  rounded-[3px];
+	}
+
+	.input {
+		@apply py-2 px-5 font-medium text-sm outline-none focus:border-whiskySour w-full h-auto border border-solid border-[#04040480] rounded-[3px] bg-[#07070708] placeholder:text-[#00000080];
+	}
+}

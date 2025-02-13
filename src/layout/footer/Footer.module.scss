@@ -1,0 +1,23 @@
+.footer {
+	@apply mt-10 w-full relative bg-black;
+
+	> .bgImage {
+		@apply bg-footerBgImage opacity-30 h-[350px] bg-no-repeat bg-cover;
+	}
+
+	> .footerContainer {
+		@apply w-full h-full absolute top-0 left-0 right-0;
+
+		> .content {
+			@apply h-auto container mx-auto px-4 text-white;
+
+			> .title {
+				@apply mt-14 text-center text-3xl text-whiskySour tracking-wider font-bold;
+			}
+
+			> .text {
+				@apply mt-7 font-medium text-lg tracking-[0.03em];
+			}
+		}
+	}
+}

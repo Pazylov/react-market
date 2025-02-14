@@ -7,11 +7,20 @@ import { PiShoppingCartLight } from 'react-icons/pi'
 import styles from './FavoritePage.module.scss'
 
 export function FavoritePage() {
-	const { cart, setCart, favorite, setFavorite } = useContext(GlobalContext)
+	const {
+		cart,
+		setCart,
+		favorite,
+		setFavorite,
+		deleteFromFavorite,
+		successToCart,
+		deleteFromCart,
+	} = useContext(GlobalContext)
 	const url = 'http://localhost:8000/static/images/knives/'
 
-	const handleFavoriteToggle = id => {
+	const handleFavoriteToggle = (id, item) => {
 		setFavorite(favorite.filter(item => item.id !== id))
+		deleteFromFavorite(item)
 	}
 
 	const handleCartToggle = product => {
@@ -19,8 +28,10 @@ export function FavoritePage() {
 
 		if (isInCart) {
 			setCart(prevCart => prevCart.filter(item => item.id !== product.id))
+			deleteFromCart(product)
 		} else {
 			setCart(prevCart => [...prevCart, { ...product, quantity: 1 }])
+			successToCart(product)
 		}
 	}
 
@@ -64,7 +75,7 @@ export function FavoritePage() {
 								</div>
 
 								<RiDeleteBin6Line
-									onClick={() => handleFavoriteToggle(item.id)}
+									onClick={() => handleFavoriteToggle(item.id, item)}
 									className={styles.deleteBtn}
 								/>
 							</div>

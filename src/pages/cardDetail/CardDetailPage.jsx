@@ -16,7 +16,8 @@ import { GlobalContext } from '../../Provider'
 import styles from './CardDetailPage.module.scss'
 
 export function CardDetailPage() {
-	const { allKnives, cart, setCart } = useContext(GlobalContext)
+	const { allKnives, cart, setCart, successToCart, deleteFromCart } =
+		useContext(GlobalContext)
 
 	const { productId } = useParams()
 	const product = allKnives.find(knife => knife.id === parseInt(productId, 10))
@@ -54,8 +55,10 @@ export function CardDetailPage() {
 
 		if (isInCart) {
 			setCart(prevCart => prevCart.filter(item => item.id !== product.id))
+			deleteFromCart(product)
 		} else {
 			setCart(prevCart => [...prevCart, { ...product, quantity: quantity }])
+			successToCart(product)
 		}
 	}
 

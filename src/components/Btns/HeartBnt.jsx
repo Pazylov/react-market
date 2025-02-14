@@ -3,24 +3,29 @@ import { IoHeartOutline, IoHeartSharp } from 'react-icons/io5'
 import { GlobalContext } from '../../Provider'
 
 export function HeartBnt({ product }) {
-	const { favorite, setFavorite } = useContext(GlobalContext)
+	const { favorite, setFavorite, successToFavorite, deleteFromFavorite } =
+		useContext(GlobalContext)
 
 	useEffect(() => {
 		localStorage.setItem('favorite', JSON.stringify(favorite))
 	}, [favorite])
 
-	const handleCartToggle = product => {
+	const handleFavoriteToggle = product => {
 		const isInFavorite = favorite.some(item => item.id === product.id)
 
 		if (isInFavorite) {
-			setFavorite(prevCart => prevCart.filter(item => item.id !== product.id))
+			setFavorite(prevFavorite =>
+				prevFavorite.filter(item => item.id !== product.id)
+			)
+			deleteFromFavorite(product)
 		} else {
-			setFavorite(prevCart => [...prevCart, { ...product }])
+			setFavorite(prevFavorite => [...prevFavorite, { ...product }])
+			successToFavorite(product)
 		}
 	}
 
 	return (
-		<button onClick={() => handleCartToggle(product)}>
+		<button onClick={() => handleFavoriteToggle(product)}>
 			{favorite.some(item => item.id === product.id) ? (
 				<IoHeartSharp className='size-5 xs:size-6 md:size-7 text-whiskySour cursor-pointer' />
 			) : (

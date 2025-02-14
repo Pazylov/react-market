@@ -11,12 +11,12 @@ import { Card } from '../../cards/collectionCard/Card'
 import styles from './Bestsellers.module.scss'
 
 export default function Bestsellers() {
-	const { allKnives } = useContext(GlobalContext)
+	const { allKnivesFromMain } = useContext(GlobalContext)
 	const [bestsellers, setBestsellers] = useState(null)
 
 	useEffect(() => {
-		if (allKnives.length > 0) {
-			const bestseller = _(allKnives)
+		if (allKnivesFromMain.length > 0) {
+			const bestseller = _(allKnivesFromMain)
 				.filter(
 					knife =>
 						knife.rating === 5 && knife.inStock === true && knife.discount === 0
@@ -26,7 +26,7 @@ export default function Bestsellers() {
 
 			setBestsellers(bestseller)
 		}
-	}, [allKnives])
+	}, [allKnivesFromMain])
 
 	if (!bestsellers) return <LoadingPage />
 

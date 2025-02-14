@@ -5,12 +5,14 @@ import { GlobalContext } from '../../Provider'
 import styles from './CartPage.module.scss'
 
 export function CartPage() {
-	const { cart, setCart, cartTotalSum } = useContext(GlobalContext)
+	const { cart, setCart, cartTotalSum, deleteFromCart } =
+		useContext(GlobalContext)
 
 	const url = 'http://localhost:8000/static/images/knives/'
 
-	const handleCartToggle = id => {
+	const handleCartToggle = (id, item) => {
 		setCart(cart.filter(item => item.id !== id))
+		deleteFromCart(item)
 	}
 
 	const updateQuantity = (id, newQuantity) => {
@@ -59,7 +61,7 @@ export function CartPage() {
 										}}
 									/>
 									<RiDeleteBin6Line
-										onClick={() => handleCartToggle(item.id)}
+										onClick={() => handleCartToggle(item.id, item)}
 										className={styles.deleteBtn}
 									/>
 								</div>

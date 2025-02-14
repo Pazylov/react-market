@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { debounce } from 'lodash'
 import { createContext, useCallback, useEffect, useRef, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export const GlobalContext = createContext()
 
@@ -8,6 +9,8 @@ export const GlobalPRovider = ({ children }) => {
 	const [allKnives, setAllKnives] = useState([])
 	const [allSteel, setAllSteel] = useState(null)
 	const [allTrademark, setAllTrademark] = useState(null)
+
+	const [allKnivesFromMain, setAllKnivesFromMain] = useState(null)
 	const allRating = [5, 4, 3, 2, 1]
 
 	const inputRef = useRef(null)
@@ -78,8 +81,14 @@ export const GlobalPRovider = ({ children }) => {
 				setKnivesLoading(false)
 			}
 		}, 500),
-		[]
+		[setKnivesLoading, setKnivesError, setAllKnives]
 	)
+
+	useEffect(() => {
+		return () => {
+			fetchData.cancel()
+		}
+	}, [fetchData])
 
 	useEffect(() => {
 		const controller = new AbortController()
@@ -110,12 +119,14 @@ export const GlobalPRovider = ({ children }) => {
 		const url = 'http://localhost:8000/api/product'
 		const fetchData = async () => {
 			try {
-				const [response1, response2] = await Promise.all([
+				const [response1, response2, response3] = await Promise.all([
 					axios.get(`${url}/steel`),
 					axios.get(`${url}/trademark`),
+					axios.get(`${url}/knives`),
 				])
 				setAllSteel(response1.data)
 				setAllTrademark(response2.data)
+				setAllKnivesFromMain(response3.data)
 			} catch (error) {
 				setError(error)
 			} finally {
@@ -148,11 +159,68 @@ export const GlobalPRovider = ({ children }) => {
 		localStorage.setItem('order', JSON.stringify(order))
 	}, [order])
 
+	const successOrder = () => {
+		toast.success('Успешно отправлено!', {
+			position: 'top-right',
+			autoClose: 3000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+		})
+	}
+
+	const successToCart = ({ name }) => {
+		toast.success(`"${name}" Успешное добавлено в корзину!`, {
+			position: 'top-right',
+			autoClose: 3000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+		})
+	}
+
+	const successToFavorite = ({ name }) => {
+		toast.success(`"${name}" Успешное добавлено в избранное!`, {
+			position: 'top-right',
+			autoClose: 3000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+		})
+	}
+
+	const deleteFromCart = ({ name }) => {
+		toast.error(`"${name}" Успешное удален из корзину!`, {
+			position: 'top-right',
+			autoClose: 3000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+		})
+	}
+
+	const deleteFromFavorite = ({ name }) => {
+		toast.error(`"${name}" Успешное удален из избранных!`, {
+			position: 'top-right',
+			autoClose: 3000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+		})
+	}
+
 	const value = {
 		allKnives,
 		allSteel,
 		allTrademark,
 		allRating,
+
+		allKnivesFromMain,
 
 		inputRef,
 
@@ -181,6 +249,12 @@ export const GlobalPRovider = ({ children }) => {
 		error,
 		knivesLoading,
 		KnivesError,
+
+		successOrder,
+		successToCart,
+		deleteFromCart,
+		successToFavorite,
+		deleteFromFavorite,
 	}
 
 	return (

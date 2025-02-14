@@ -22,9 +22,7 @@ export default function Sidebar() {
 		setFilterByInStock,
 	} = useContext(GlobalContext)
 
-	const toggleFilterByTrademark = e => {
-		const value = e.target.value
-
+	const toggleFilterByTrademark = value => {
 		if (filterByTrademark.includes(value)) {
 			setFilterByTrademark(prev => prev.filter(item => item !== value))
 		} else {
@@ -32,9 +30,7 @@ export default function Sidebar() {
 		}
 	}
 
-	const toggleFilterBySteel = e => {
-		const value = e.target.value
-
+	const toggleFilterBySteel = value => {
 		if (filterBySteel.includes(value)) {
 			setFilterBySteel(prev => prev.filter(item => item !== value))
 		} else {
@@ -42,9 +38,7 @@ export default function Sidebar() {
 		}
 	}
 
-	const toggleFilterByRating = e => {
-		const value = Number(e.target.value)
-
+	const toggleFilterByRating = value => {
 		if (filterByRating.includes(value)) {
 			setFilterByRating(prev => prev.filter(item => item !== value))
 		} else {
@@ -68,7 +62,7 @@ export default function Sidebar() {
 						<InputCheckbox
 							onChange={toggleFilterByInStock}
 							label={'Товары в наличии'}
-							value={true}
+							checked={filterByInStock}
 						/>
 					</li>
 				</ul>
@@ -79,9 +73,9 @@ export default function Sidebar() {
 					{allTrademark.map(item => (
 						<li key={item} className={styles.content}>
 							<InputCheckbox
-								onChange={toggleFilterByTrademark}
+								onChange={() => toggleFilterByTrademark(item)}
 								label={item}
-								value={item}
+								checked={filterByTrademark.includes(item)}
 							/>
 						</li>
 					))}
@@ -93,9 +87,9 @@ export default function Sidebar() {
 					{allSteel.map(item => (
 						<li key={item} className={styles.content}>
 							<InputCheckbox
-								onChange={toggleFilterBySteel}
+								onChange={() => toggleFilterBySteel(item)}
 								label={item}
-								value={item}
+								checked={filterBySteel.includes(item)}
 							/>
 						</li>
 					))}
@@ -107,8 +101,8 @@ export default function Sidebar() {
 					{allRating.map(item => (
 						<li className={styles.content} key={item}>
 							<InputCheckbox
-								onChange={toggleFilterByRating}
-								value={item}
+								onChange={() => toggleFilterByRating(item)}
+								checked={filterByRating.includes(item)}
 								label={
 									<Rating
 										rating={item}

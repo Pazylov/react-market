@@ -8,7 +8,8 @@ import { Rating } from '../../Rating'
 import styles from './Card.module.scss'
 
 export function Card({ product }) {
-	const { cart, setCart } = useContext(GlobalContext)
+	const { cart, setCart, successToCart, deleteFromCart } =
+		useContext(GlobalContext)
 
 	const url = 'http://localhost:8000/static/images/knives/'
 
@@ -17,8 +18,10 @@ export function Card({ product }) {
 
 		if (isInCart) {
 			setCart(prevCart => prevCart.filter(item => item.id !== product.id))
+			deleteFromCart(product)
 		} else {
 			setCart(prevCart => [...prevCart, { ...product, quantity: 1 }])
+			successToCart(product)
 		}
 	}
 

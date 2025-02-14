@@ -5,7 +5,7 @@ import { GlobalContext } from '../../../Provider'
 import styles from './OrderForm.module.scss'
 
 export default function OrderForm() {
-	const { setOrder, cart, setCart } = useContext(GlobalContext)
+	const { setOrder, cart, setCart, successOrder } = useContext(GlobalContext)
 	const navigate = useNavigate()
 
 	const {
@@ -26,6 +26,7 @@ export default function OrderForm() {
 		reset()
 		setCart([])
 		navigate('/')
+		successOrder()
 	}
 
 	return (

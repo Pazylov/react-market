@@ -11,19 +11,19 @@ import { Card } from '../../cards/collectionCard/Card'
 import styles from './Stock.module.scss'
 
 export default function Stock() {
-	const { allKnives } = useContext(GlobalContext)
+	const { allKnivesFromMain } = useContext(GlobalContext)
 	const [stocks, setStocks] = useState(null)
 
 	useEffect(() => {
-		if (allKnives.length > 0) {
-			const stock = _(allKnives)
+		if (allKnivesFromMain.length > 0) {
+			const stock = _(allKnivesFromMain)
 				.filter(knife => knife.inStock === true && knife.discount === 50)
 				.take(4)
 				.value()
 
 			setStocks(stock)
 		}
-	}, [allKnives])
+	}, [allKnivesFromMain])
 
 	if (!stocks) return <LoadingPage />
 
